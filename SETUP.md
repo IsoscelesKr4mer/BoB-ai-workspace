@@ -89,25 +89,53 @@ Claude Code reads `CLAUDE.md` automatically, just like Cowork does. Everything y
 
 ### Setting up Discord integration
 
-This is what lets you message the AI from Discord and have it respond in a channel — and lets the AI post action items, draft notifications, and portfolio alerts on its own.
+This is what lets you message the AI from Discord and have it respond — and lets the AI proactively post action items, draft notifications, and portfolio alerts to your channels.
 
-**1. Create a Discord server** (or use one you already have). Create channels for the outputs you want:
+**1. Install Bun** (required by the Discord plugin):
+```bash
+curl -fsSL https://bun.sh/install | bash
+```
+
+**2. Create a Discord bot** at [discord.com/developers/applications](https://discord.com/developers/applications):
+- New Application → add a bot → enable **Message Content Intent**
+- Copy your bot token (shown once — save it)
+- Use the OAuth2 URL Generator to invite the bot to your server: select the `bot` scope, enable send messages + read history + add reactions
+
+**3. Create channels in your Discord server** for the outputs you want:
 - `#general` — action item syncs, portfolio alerts
 - `#call-prep` — call prep briefings
 - `#email-drafts` — drafts pending your approval
 - `#meeting-notes` — processed meeting note outputs
 
-**2. Install the Discord MCP for Claude Code.** In your Claude Code session:
-
+**4. Install the Discord plugin** in Claude Code:
+```bash
+plugin install discord@claude-plugins-official
 ```
-claude mcp add discord
+
+**5. Configure with your bot token:**
+```
+/discord:configure
+```
+Paste your token when prompted.
+
+**6. Restart Claude Code with Discord enabled:**
+```bash
+claude --channels plugin:discord@claude-plugins-official
 ```
 
-Follow the prompts to connect to your server and authenticate. You'll need to grant the bot access to the channels you created.
+**7. Pair your account:** DM your bot — it will send you a pairing code. Then in your Claude Code session:
+```
+/discord:access pair <code>
+```
 
-**3. Update CLAUDE.md** with your channel names so the AI knows where to post what. The Discord section is already in the template — just swap in your actual channel names.
+**8. Lock it down:** Switch from pairing mode to allowlist so only you can talk to it:
+```
+/discord:access policy allowlist
+```
 
-**4. To message Claude Code from Discord:** The Discord MCP enables bidirectional communication. You post a message in a designated channel, Claude Code picks it up and responds. Useful for: *"Prep me for my Acme call at 2pm"* sent from your phone before you walk into the office.
+**9. Update CLAUDE.md** with your channel names so BoB knows where to post what. The Discord section is already in the template — just swap in your actual channel names.
+
+Once paired, you post a message in Discord and BoB responds. Works from your phone, from anywhere.
 
 ### The Cowork + Claude Code hybrid
 
