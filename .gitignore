@@ -1,0 +1,20 @@
+# Ignore personal data — never commit actual account data
+accounts/*/
+!accounts/_template.md
+
+# Ignore memory files — these are personal daily logs
+memory/
+
+# Ignore tracking files with live data — these get regenerated
+tracking/portfolio-summary.md
+tracking/product-analytics-hashes.md
+tracking/to-do.md
+tracking/waiting-on.md
+tracking/renewal-pipeline.md
+
+# Keep the empty tracking stubs (they're templates)
+!tracking/.gitkeep
+
+# OS stuff
+.DS_Store
+Thumbs.db
