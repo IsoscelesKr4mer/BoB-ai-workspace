@@ -1,12 +1,18 @@
-# CSM AI Workspace
+# BoB — Book of Business AI Workspace
 
-A structured AI assistant workspace for enterprise Customer Success Managers. Built for Claude (via [Cowork](https://claude.ai) or [Claude Code](https://docs.claude.com/en/docs/claude-code/overview)), but adaptable to any AI tool that supports a system prompt or instruction file.
+An AI workspace for anyone who owns a book of business — CS, sales, account management, and partnerships. Built for Claude (via [Cowork](https://claude.ai) or [Claude Code](https://docs.claude.com/en/docs/claude-code/overview)), but adaptable to any AI tool that supports a system prompt or instruction file.
+
+---
+
+## Meet BoB
+
+BoB is the name for your AI assistant in this workspace — short for Book of Business. You can rename it to whatever you want in `CLAUDE.md`. Some people name theirs after a favorite colleague. Some keep it generic. BoB is just a starting point.
 
 ---
 
 ## What This Is
 
-Most CSMs who experiment with AI end up with a generic chatbot that doesn't know their accounts, can't prep for a specific call, and produces emails that sound like they were written by a consultant. This workspace fixes that.
+Most people who experiment with AI for account work end up with a generic chatbot that doesn't know their accounts, can't prep for a specific call, and produces emails that sound like they were written by a consultant. This workspace fixes that.
 
 The core idea: treat the AI as a specialized team member with its own operating procedures, not a search box. Give it structure, context, and a clear chain of custody for information. Get results that are actually useful.
 
@@ -34,7 +40,7 @@ The core idea: treat the AI as a specialized team member with its own operating 
 ## Folder Structure
 
 ```
-csm-ai-workspace/
+bookofbusiness-ai-workspace/
 ├── CLAUDE.md                         ← Main instruction file (configure this first)
 │
 ├── skills/                           ← Workflow modules
@@ -47,8 +53,8 @@ csm-ai-workspace/
 │   ├── product-analytics/SKILL.md    ← Usage queries
 │   └── portfolio-usage-report/SKILL.md ← Cross-account usage trends
 │
-├── accounts/                         ← One file per customer
-│   └── _template.md                  ← Copy this when adding a new account
+├── accounts/                         ← One file per customer (auto-populated from CRM)
+│   └── _template.md                  ← Reference only — BoB generates these from your CRM
 │
 ├── tracking/                         ← Always-on operational files
 │   ├── portfolio-summary.md          ← Canonical portfolio view (auto-generated)
@@ -98,7 +104,11 @@ The skill files reference generic tool names. Update the tool name comments in e
 
 ### 3. Add your accounts
 
-For each customer, copy `accounts/_template.md` to `accounts/{account-name}.md` and fill it in. You can also have the AI populate these from your CRM by running the crm-portfolio-sync skill.
+Just tell BoB to pull your accounts from your CRM:
+
+> *"Sync my accounts from HubSpot and create account files for each one."*
+
+That's it. BoB will query your CRM, pull contract and contact data for every account you own, and build out the `accounts/` folder automatically. The `accounts/_template.md` file is just there as a reference for what an account file looks like — you don't need to touch it.
 
 ### 4. Populate the analytics identifier file
 
@@ -118,7 +128,7 @@ Drop the workspace folder where your AI tool can read it (Cowork mounts it autom
 
 ## Customizing the Humanizer
 
-The humanizer (`skills/humanizer/SKILL.md`) is opinionated. It's tuned for a direct, warm CSM voice that doesn't sound like a press release. If your communication style is different, edit the kill list and tone target to match. The important thing is that it runs automatically on every customer-facing draft — not just when you remember.
+The humanizer (`skills/humanizer/SKILL.md`) is opinionated. It's tuned for a direct, warm voice that doesn't sound like a press release. If your communication style is different, edit the kill list and tone target to match. The important thing is that it runs automatically on every customer-facing draft — not just when you remember.
 
 ---
 
@@ -155,4 +165,4 @@ This is the main way the workspace improves over time without any code changes.
 
 ## Questions / Contributing
 
-This is a working system, not a polished product. If you're a CSM and you adapt it to your stack, I'd be curious what you changed.
+This is a working system, not a polished product. If you own a book of business and you adapt it to your stack, I'd be curious what you changed.

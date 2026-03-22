@@ -140,7 +140,7 @@ The point is: if the workspace isn't behaving the way you want, that's not a lim
 
 To wire up your tools and integrations, tell Cowork:
 
-> *"I'm a CSM at [Company]. I use Salesforce as my CRM, Amplitude for analytics, Gmail, and Confluence for notes. My name is [Name] and I'm based in [City]. Help me customize CLAUDE.md for my setup."*
+> *"I'm an account manager at [Company]. I use Salesforce as my CRM, Amplitude for analytics, Gmail, and Confluence for notes. My name is [Name] and I'm based in [City]. Help me customize CLAUDE.md for my setup."*
 
 The AI will read the current `CLAUDE.md`, ask you a few clarifying questions about your tools and workflow, and update the file for your stack. It can also update the skill files to reference your actual tool names.
 

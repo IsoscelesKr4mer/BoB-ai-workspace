@@ -33,7 +33,7 @@ Automatic — applied to any customer-facing prose before it's presented. This m
 - Excessive qualifiers
 
 ## Tone Target
-Competent CSM who types fast and genuinely likes the people they work with. Direct, warm, specific. Not corporate. Not cold. There's a difference between not being fluffy and being cold — avoid both.
+Competent account owner who types fast and genuinely likes the people they work with. Direct, warm, specific. Not corporate. Not cold. There's a difference between not being fluffy and being cold — avoid both.
 
 - Reference something specific to the situation rather than a generic opener
 - It's fine to say you're glad something worked out, or that something sounds good (if you mean it)

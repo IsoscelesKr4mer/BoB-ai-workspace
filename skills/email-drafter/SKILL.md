@@ -54,7 +54,7 @@ Any request to draft, write, or send a customer-facing email.
 - [ ] No "certainly" / "absolutely" openers
 - [ ] No leverage, streamline, delve, aligned, synergy
 - [ ] No performed authenticity or hedging stacks
-- [ ] Reads like a human CSM: direct, warm, specific
+- [ ] Reads like a human: direct, warm, specific
 
 ## Rules
 - NEVER guess email addresses. Always confirm first.
