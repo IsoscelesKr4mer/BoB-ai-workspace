@@ -25,7 +25,7 @@ This guide takes you from zero to a working AI workspace tailored to your stack.
 - **[Claude Cowork](https://claude.ai)** — the desktop app that runs this workspace. Currently in research preview; access is included with Claude Pro/Max.
 - **The tools you already use** — CRM, analytics, email, notes. You don't need all of them on day one.
 
-That's it. **95% of this workspace works out of the box with just Cowork** — call prep, meeting notes, email drafts, CRM sync, analytics queries, account health checks, all of it. Claude Code and Discord are optional additions for two specific things covered in Step 3, and you don't need to think about them to get started.
+That's it. **Everything in this workspace works out of the box with just Cowork** — call prep, meeting notes, email drafts, CRM sync, analytics queries, account health checks, all of it. Claude Code and Discord are purely optional additions covered in Step 3. You're not getting an incomplete setup without them — they're extras for people who want always-on Discord access and advanced Gmail automation after they're already up and running.
 
 ---
 
