@@ -4,9 +4,7 @@
 Any request involving usage data, engagement metrics, activity trends, or account activity in your product analytics tool (Mixpanel, Amplitude, etc.).
 
 ## Before Any Query
-Check `tracking/product-analytics-hashes.md` for the customer's identifier. If your analytics tool uses hashed or obfuscated customer IDs, plaintext names may silently return no data.
-
-Identifier not in the file? Ask [YOUR NAME] to look it up in the analytics tool's Users/People tab. Save it to the hashes file once provided.
+Query your analytics tool directly via the MCP connector using the customer's name. Most modern analytics connectors resolve customer names without any manual ID lookup. If a query returns no results, try the company name exactly as it appears in your analytics tool — it may differ slightly from how it's stored in your CRM.
 
 ## Project / Workspace Setup
 - **Project ID / Workspace:** `[YOUR_PROJECT_ID]`
@@ -53,10 +51,9 @@ Adapt this to your analytics tool's API. Mixpanel example:
 - Other key events: `[list your high-value events]`
 
 ## Rules
-1. Filters go INSIDE the report/query object — not at the top level.
-2. Always use the correct customer identifier type (hashed vs. plaintext).
-3. Hash/identifier value must match exactly what's stored — case sensitive.
-4. For portfolio reports across all accounts: read `skills/portfolio-usage-report/SKILL.md` first.
+1. Use plaintext customer names via your analytics connector — no manual ID lookup required.
+2. If a query returns empty, the name may differ between your CRM and analytics tool. Try variations or search by domain.
+3. For portfolio reports across all accounts: read `skills/portfolio-usage-report/SKILL.md` first.
 
 ## Common Date Windows
 - Last 30 days: today minus 30 days → today

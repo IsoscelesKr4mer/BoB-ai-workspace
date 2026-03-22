@@ -110,11 +110,7 @@ Just tell BoB to pull your accounts from your CRM:
 
 That's it. BoB will query your CRM, pull contract and contact data for every account you own, and build out the `accounts/` folder automatically. The `accounts/_template.md` file is just there as a reference for what an account file looks like — you don't need to touch it.
 
-### 4. Populate the analytics identifier file
-
-For each account, add their customer identifier to `tracking/product-analytics-hashes.md`. If you don't have these, the analytics skill will prompt you to look them up.
-
-### 5. Start using it
+### 4. Start using it
 
 Drop the workspace folder where your AI tool can read it (Cowork mounts it automatically). Then just talk to it:
 

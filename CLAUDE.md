@@ -148,25 +148,10 @@ properties: ["name","[your_arr_field]","next_renewal_date","[your_true_renewal_f
 **Project ID / Workspace:** `[YOUR_PROJECT_ID]`
 **Tool:** `[your analytics MCP tool name]`
 
-**Customer identifiers:** Always check `tracking/product-analytics-hashes.md` before any query. If using hashed customer IDs, plaintext names may not work in the raw API.
-
-### Query structure
-<!-- Cowork will fill this in with the correct syntax for your analytics tool once configured. -->
-```json
-{
-  "project_id": "[YOUR_PROJECT_ID]",
-  "report_type": "[YOUR_REPORT_TYPE]",
-  "report": {
-    "metrics": [{"eventName": "[YOUR_KEY_EVENT]", "measurement": {"type": "basic", "math": "total"}}],
-    "name": "[Customer] [Event] Report",
-    "dateRange": {"type": "absolute", "from": "YYYY-MM-DD", "to": "YYYY-MM-DD"},
-    "filters": [{"type": "[FILTER_TYPE]", "propertyName": "[CUSTOMER_ID_PROPERTY]", "operator": "equals", "value": "[VALUE]", "resource": "[RESOURCE_TYPE]"}]
-  }
-}
-```
+**Customer lookup:** Query customers by name via the analytics connector — no manual ID lookup required. If a query returns empty, the name may differ slightly between your CRM and analytics tool. Try variations or ask Cowork to search by domain.
 
 ### Rules
-- Identifier not in the file? Look it up in the analytics tool's Users/People tab. Save it once found.
+- Use plaintext customer names. Modern analytics connectors resolve these without manual ID mapping.
 - For portfolio reports across all accounts: read `skills/portfolio-usage-report/SKILL.md` first.
 - When in doubt about query syntax, ask Cowork to check the analytics tool's API reference.
 
