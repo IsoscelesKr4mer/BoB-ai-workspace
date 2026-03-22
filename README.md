@@ -100,7 +100,9 @@ This workspace is built to work with MCP (Model Context Protocol) connectors. In
 - **Calendar** — Google Calendar, etc.
 - **Notes** — Notion, Confluence (optional)
 
-The skill files reference generic tool names. Update the tool name comments in each skill file to match your actual MCP connector names once connected.
+Once connected, tell Cowork which tools you're using and it'll configure the skill files automatically:
+
+> *"I connected HubSpot, Mixpanel, and Gmail. Update the skill files to reference these."*
 
 ### 3. Add your accounts
 
@@ -124,7 +126,7 @@ Drop the workspace folder where your AI tool can read it (Cowork mounts it autom
 
 ## Customizing the Humanizer
 
-The humanizer (`skills/humanizer/SKILL.md`) is opinionated. It's tuned for a direct, warm voice that doesn't sound like a press release. If your communication style is different, edit the kill list and tone target to match. The important thing is that it runs automatically on every customer-facing draft — not just when you remember.
+The humanizer (`skills/humanizer/SKILL.md`) is opinionated — tuned for a direct, warm voice that doesn't sound like a press release. If your style is different, just tell Cowork how you want it adjusted. It runs automatically on every customer-facing draft.
 
 ---
 

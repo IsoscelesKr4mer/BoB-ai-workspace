@@ -133,9 +133,24 @@ claude --channels plugin:discord@claude-plugins-official
 /discord:access policy allowlist
 ```
 
-**9. Update CLAUDE.md** with your channel names so BoB knows where to post what. The Discord section is already in the template — just swap in your actual channel names.
+**9. Tell Cowork your channel names** and it'll update CLAUDE.md for you:
+
+> *"I set up Discord with channels #general, #call-prep, #email-drafts, and #meeting-notes. Update CLAUDE.md with these."*
 
 Once paired, you post a message in Discord and BoB responds. Works from your phone, from anywhere.
+
+**10. Save a launch alias** so you can start everything with one word. Find your shell config file (`~/.zprofile` is common on Mac) and add:
+
+```bash
+alias bob='cd ~/path/to/BoB-ai-workspace && claude --channels plugin:discord@claude-plugins-official --dangerously-skip-permissions'
+```
+
+Then reload it:
+```bash
+source ~/.zprofile
+```
+
+Now just type `bob` in any terminal window to launch. The `--dangerously-skip-permissions` flag is what makes the async Discord workflow actually work — without it, Claude Code stops to ask for approval on every file write and tool call, which defeats the purpose of running it in the background. It's scoped to your workspace folder and only active when you've launched it.
 
 ### The Cowork + Claude Code hybrid
 
@@ -199,7 +214,11 @@ In Cowork, go to **Settings → Connectors** (or ask the AI: *"What connectors a
 | Attio | Attio MCP | Companies, contacts, lists |
 | Zoho CRM | Zoho MCP | Accounts, deals, activities |
 
-**After connecting your CRM:** Update the CRM section of `CLAUDE.md` with your actual owner/user ID and your custom field names. Your CRM's internal field names are often different from the display names — HubSpot and Salesforce especially. Ask the AI: *"Pull my HubSpot properties and show me the internal API names for ARR and renewal date."* It can look these up and update CLAUDE.md for you.
+**After connecting your CRM:** Tell Cowork to configure it for you:
+
+> *"I just connected HubSpot. Look up my owner ID and the internal field names for ARR and renewal date, then update CLAUDE.md."*
+
+Cowork will query your CRM directly, find the right values, and update the file — no manual lookup needed.
 
 ### Product Analytics
 
@@ -212,9 +231,9 @@ In Cowork, go to **Settings → Connectors** (or ask the AI: *"What connectors a
 | Gainsight PX | Gainsight MCP | Engagement scores, feature usage |
 | Segment | Segment MCP | Raw event data, trait queries |
 
-**The customer identifier problem:** Every analytics tool stores customers under some ID — sometimes a hashed value, sometimes an account name, sometimes a domain. The `tracking/product-analytics-hashes.md` file is where you keep the mapping between account name and that identifier. Fill it in as you go; the AI will prompt you when it hits an account it doesn't have an ID for.
+**What events to track:** Tell Cowork what your product's key actions are and it'll configure the analytics skill:
 
-**What events to track:** Update `skills/product-analytics/SKILL.md` with the events that signal engagement in your product. Think: what does a healthy, active customer do regularly? That's your primary event. What signals someone logging in? That's your session event. Two events is enough to start.
+> *"My product's main engagement event is [Export / Clip / Report Generated]. Sessions are tracked as [Login / App Open]. Update the analytics skill with these."*
 
 ### Email & Calendar
 
@@ -243,7 +262,9 @@ The email drafter skill creates drafts directly in your drafts folder — it nev
 | Discord | Discord MCP | Same as Slack — good for solo operators or small teams |
 | Microsoft Teams | Teams MCP | Enterprise alternative |
 
-**Setting up a Slack or Discord workflow:** Connect the MCP, then tell the AI which channels to use for which outputs (action items, email drafts pending review, portfolio alerts, etc.). Update the relevant section of `CLAUDE.md` with those channel names. The skill files reference Discord by default — the AI can update them to Slack with one instruction.
+**Setting up a Slack workflow:** Connect the MCP, then tell Cowork which channels to use:
+
+> *"I use Slack, not Discord. My channels are #general, #account-alerts, and #email-drafts. Update CLAUDE.md and the skill files to use Slack."*
 
 ### Customer Success Platforms
 
@@ -418,7 +439,9 @@ Should ask you to confirm the email address, then produce a draft that doesn't s
 
 > *"Add a regression to the email-drafter skill: [what went wrong → rule that prevents it]."*
 
-**Customize the humanizer.** The kill list is opinionated. If your customers are more formal, or if you use certain phrases intentionally, edit `skills/humanizer/SKILL.md` to reflect your actual voice. The goal is that a reader can't tell the AI helped — it should sound like you.
+**Customize the humanizer.** The kill list is opinionated and tuned for a direct, warm voice. If your style or audience is different, just tell Cowork:
+
+> *"My customers are more formal — adjust the humanizer to match a professional but not cold tone."*
 
 **You can ask the AI to improve itself.** If a skill output isn't matching what you want, describe the gap:
 
@@ -439,10 +462,10 @@ The account file probably doesn't exist yet. Ask it to create one from CRM data,
 Usually a field name mismatch. Ask: *"Check my CLAUDE.md CRM field names against what's actually in HubSpot/Salesforce."* The AI can query your CRM's property list and spot the discrepancy.
 
 **"Analytics queries return no data."**
-The customer identifier is probably wrong or missing. Check `tracking/product-analytics-hashes.md`. If the account is listed, the identifier may have changed — look it up in the analytics tool's Users tab and update the file.
+The customer name probably differs slightly between your CRM and analytics tool. Tell Cowork: *"The analytics query for [Account] returned nothing — help me figure out what name they're stored under in [tool]."*
 
 **"The email sounds like an AI wrote it."**
-Run the humanizer explicitly: *"Re-run humanizer on that draft."* If it keeps happening, add a regression to `skills/humanizer/SKILL.md` capturing what the specific issue was.
+Tell Cowork: *"Re-run the humanizer on that draft"* — or *"The emails still sound too formal. Update the humanizer skill to fix this."*
 
 **"The AI is doing things I didn't ask."**
-Check `CLAUDE.md` trust boundaries. External actions (sending, posting) should always require approval. If that section got modified, restore it.
+Tell Cowork: *"Review my CLAUDE.md trust boundaries and make sure external actions require my approval before anything is sent or posted."*
